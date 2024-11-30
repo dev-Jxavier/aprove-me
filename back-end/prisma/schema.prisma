@@ -14,18 +14,18 @@ datasource db {
 }
 
 model Payable {
-  id          String   @id @default(uuid())
-  value       Float
-  emssionDate DateTime
-  assignor    Assignor @relation(fields: [assignorId], references: [id])
-  assignorId  String
+  id           String   @id @default(uuid())
+  value        Float
+  emissionDate DateTime
+  assignor     Assignor @relation(fields: [assignorId], references: [id])
+  assignorId   String   @unique
 }
 
 model Assignor {
-  id       String    @id @default(uuid())
+  id       String   @id @default(uuid())
   document String
   email    String
   phone    String
   name     String
-  payable  Payable[]
+  payable  Payable?
 }
