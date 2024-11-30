@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAssignorDto } from './dto/create-assignor.dto';
 import { Assignor } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { UpdateAssignorDto } from './dto/update-assignor.dto';
 
 @Injectable()

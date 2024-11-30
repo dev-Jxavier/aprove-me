@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateAssignorDto } from './dto/create-assignor.dto';
 import { AssignorService } from './assignor.service';
-import { UpdatePayableDto } from 'src/payable/dto/update-payable.dto';
+import { UpdatePayableDto } from '../payable/dto/update-payable.dto';
 
 @Controller('integrations/assignor')
 export class AssignorController {
