@@ -7,6 +7,6 @@ import { PayableModule } from './payable/payable.module';
 @Module({
   imports: [IntegrationsModule, PayableModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
