@@ -10,6 +10,6 @@ export class CreatePayableDto {
     @IsDateString({}, { message: 'O campo emissionDate deve ser uma data válida.' })
     emissionDate: Date;
 
-    @IsUUID('all', { message: 'O campo assignor deve ser um UUID válido.' })
-    assignor: string;
+    @IsUUID('all', { message: 'O campo assignorId deve ser um UUID válido.' })
+    assignorId: string;
 }
