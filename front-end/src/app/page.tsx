@@ -23,10 +23,10 @@ export default function Home() {
   }
 
   return (
-    <div className="h-screen">
+    <div className="mt-20">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <Image src='/logo-bankme.png' width={80} height={80} alt="logo-bankme" className="mx-auto" />
+          <Image src='/logo-bankme-large.png' width={250} height={250} alt="logo-bankme" className="mx-auto" />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Entre com sua conta
           </h2>
