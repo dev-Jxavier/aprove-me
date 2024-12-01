@@ -3,15 +3,24 @@ import Image from "next/image";
 import Input from "./Components/Input";
 import Button from "./Components/Button";
 import { useForm } from "react-hook-form";
+import { login } from "@/services/login";
 
 interface Inputs {
-  user: string
+  login: string
   password: string
 }
 
 export default function Home() {
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit = (data: any) => console.log(data);
+
+  const onSubmit = async (data: Inputs) => {
+    try {
+      const response = await login(data)
+      console.log(response.data.access_token)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="h-screen">
@@ -25,7 +34,7 @@ export default function Home() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-            <Input label="Usuário" type="text" placeholder="usuário" {...register("user")} />
+            <Input label="Usuário" type="text" placeholder="usuário" {...register("login")} />
             <Input label="Senha" type="password" placeholder="senha" {...register("password")} />
 
             <Button label="Entrar" type="submit" />
