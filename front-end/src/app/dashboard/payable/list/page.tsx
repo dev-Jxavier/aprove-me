@@ -31,7 +31,7 @@ const ListPayable = () => {
 
     return (
         <>
-            <h1 className="font-bold my-10 text-2xl">Criar pagável novo: </h1>
+            <h1 className="font-bold my-10 text-2xl">Listagem de pagáveis: </h1>
 
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse border border-gray-200">
