@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
-import Input from "./Components/Input";
-import Button from "./Components/Button";
+import Input from "./components/Input";
+import Button from "./components/Button";
 import { useForm } from "react-hook-form";
 import { login } from "@/services/login";
 import { getLocalStorage, setLocalStorage } from "./lib/localStorage";
