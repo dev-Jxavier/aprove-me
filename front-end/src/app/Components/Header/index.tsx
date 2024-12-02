@@ -1,14 +1,16 @@
 "use client"
+import { useAuthContext } from '@/app/contexts/authContext'
 import { TOKEN_BAKNME } from '@/app/lib/constants-local-storage'
 import { deleteLocalStorage } from '@/app/lib/localStorage'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
+    { name: 'Dashboard', href: '/dashboard', current: true },
+    { name: 'Cedente', href: '/dashboard/assignor/create', current: false },
     { name: 'Projects', href: '#', current: false },
     { name: 'Calendar', href: '#', current: false },
 ]
@@ -19,9 +21,11 @@ function classNames(...classes: string[]) {
 
 const Header = () => {
     const router = useRouter()
+    const { deleteToken } = useAuthContext()
 
     const logout = () => {
         deleteLocalStorage(TOKEN_BAKNME)
+        deleteToken()
         router.push('/')
     }
 
@@ -45,7 +49,7 @@ const Header = () => {
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
                                 {navigation.map((item) => (
-                                    <a
+                                    <Link
                                         key={item.name}
                                         href={item.href}
                                         aria-current={item.current ? 'page' : undefined}
@@ -55,7 +59,7 @@ const Header = () => {
                                         )}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

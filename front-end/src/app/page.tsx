@@ -8,6 +8,7 @@ import { getLocalStorage, setLocalStorage } from "./lib/localStorage";
 import { TOKEN_BAKNME } from "./lib/constants-local-storage";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useAuthContext } from "./contexts/authContext";
 
 interface Inputs {
   login: string
@@ -17,6 +18,7 @@ interface Inputs {
 export default function Home() {
   const { register, handleSubmit, setError, formState: { errors }, watch } = useForm<Inputs>();
   const router = useRouter()
+  const { setToken } = useAuthContext()
 
   useEffect(() => {
     if (getLocalStorage(TOKEN_BAKNME)) {
@@ -28,6 +30,7 @@ export default function Home() {
     try {
       const response = await login(data)
       setLocalStorage(TOKEN_BAKNME, response.data.access_token);
+      setToken(response.data.access_token)
       router.push('/dashboard')
     } catch (error: any) {
       setError('root', { message: error?.response?.data.message || "Erro interno!" })
