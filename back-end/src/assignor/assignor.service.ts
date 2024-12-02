@@ -12,6 +12,10 @@ export class AssignorService {
         return this.prismaService.assignor.create({ data })
     }
 
+    async getAll(): Promise<Assignor[]> {
+        return this.prismaService.assignor.findMany({})
+    }
+
     async getById(id: string) {
         return this.prismaService.assignor.findUnique({ where: { id } })
     }

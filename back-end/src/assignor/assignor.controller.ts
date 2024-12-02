@@ -12,6 +12,11 @@ export class AssignorController {
         return this.assignorService.create(createAssignorDto);
     }
 
+    @Get()
+    getAll() {
+        return this.assignorService.getAll();
+    }
+
     @Get(':id')
     getById(@Param('id') id: string) {
         return this.assignorService.getById(id);
