@@ -1,0 +1,1 @@
+export const TOKEN_BAKNME = "@token-bankme"

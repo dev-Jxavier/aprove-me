@@ -4,6 +4,8 @@ import Input from "./Components/Input";
 import Button from "./Components/Button";
 import { useForm } from "react-hook-form";
 import { login } from "@/services/login";
+import { setLocalStorage } from "./lib/localStorage";
+import { TOKEN_BAKNME } from "./lib/constants-local-storage";
 
 interface Inputs {
   login: string
@@ -11,14 +13,14 @@ interface Inputs {
 }
 
 export default function Home() {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit, setError, formState: { errors } } = useForm<Inputs>();
 
   const onSubmit = async (data: Inputs) => {
     try {
       const response = await login(data)
-      console.log(response.data.access_token)
-    } catch (error) {
-      console.log(error)
+      setLocalStorage(TOKEN_BAKNME, response.data.access_token);
+    } catch (error: any) {
+      setError('root', { message: error?.response?.data.message || "Erro interno!" })
     }
   }
 
@@ -36,8 +38,8 @@ export default function Home() {
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <Input label="Usuário" type="text" placeholder="usuário" {...register("login")} />
             <Input label="Senha" type="password" placeholder="senha" {...register("password")} />
-
             <Button label="Entrar" type="submit" />
+            {errors.root ? <p className="text-red-600">{errors.root.message}</p> : <p></p>}
           </form>
         </div>
       </div>
