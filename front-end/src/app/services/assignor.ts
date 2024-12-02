@@ -17,3 +17,7 @@ export const createAssignor = ({ document, email, name, phone }: AssignorProps) 
 export const getByIdAssignor = (id: string) => {
     return api.get<AssignorProps>(`/integrations/assignor/${id}`)
 }
+
+export const getAllAssignors = () => {
+    return api.get<AssignorProps[]>(`/integrations/assignor`)
+}
