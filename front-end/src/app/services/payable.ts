@@ -16,3 +16,11 @@ export const createPayable = ({ value, emissionDate, assignorId }: PayableProps)
 export const getByIdPayable = (id: string) => {
     return api.get<PayableProps>(`/integrations/payable/${id}`)
 }
+
+export const getAllPayable = () => {
+    return api.get<PayableProps[]>(`/integrations/payable`)
+}
+
+export const deletePayable = (id: string) => {
+    return api.delete(`/integrations/payable/${id}`)
+}
