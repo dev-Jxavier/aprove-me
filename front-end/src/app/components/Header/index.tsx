@@ -6,14 +6,9 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-const navigation = [
-    { name: 'Dashboard', href: '/dashboard', current: true },
-    { name: 'Cedente', href: '/dashboard/assignor/create', current: false },
-    { name: 'Pagável', href: '/dashboard/payable/create', current: false },
-    { name: 'Calendar', href: '#', current: false },
-]
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -21,7 +16,20 @@ function classNames(...classes: string[]) {
 
 const Header = () => {
     const router = useRouter()
+    const pathname = usePathname()
     const { deleteToken } = useAuthContext()
+    const [navigation, setNavigation] = useState([
+        { name: 'Dashboard', href: '/dashboard', current: true },
+        { name: 'Criar Cedente', href: '/dashboard/assignor/create', current: false },
+        { name: 'Criar Pagável', href: '/dashboard/payable/create', current: false },
+        { name: 'Lista Pagáveis', href: '/dashboard/payable/list', current: false },
+    ])
+
+    useEffect(() => {
+        setNavigation(navigations => {
+            return navigations.map(navigation => ({ ...navigation, current: navigation.href === pathname }))
+        })
+    }, [pathname])
 
     const logout = () => {
         deleteLocalStorage(TOKEN_BAKNME)
