@@ -13,3 +13,7 @@ export const createAssignor = ({ document, email, name, phone }: AssignorProps) 
     const uuid = uuidv4()
     return api.post<AssignorProps>('/integrations/assignor', { id: uuid, document, email, name, phone })
 }
+
+export const getByIdAssignor = (id: string) => {
+    return api.get<AssignorProps>(`/integrations/assignor/${id}`)
+}
