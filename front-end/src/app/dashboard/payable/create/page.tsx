@@ -3,6 +3,7 @@ import Input from "@/app/components/Input"
 import Select from "@/app/components/SelectAssignor"
 import { createPayable } from "@/app/services/payable";
 import Button from "@/components/Button";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form"
 
 interface Inputs {
@@ -13,13 +14,13 @@ interface Inputs {
 
 const CreatePayable = () => {
     const { register, handleSubmit, setError, formState: { errors }, setValue, watch, clearErrors } = useForm<Inputs>();
+    const router = useRouter()
 
     const onSubmit = async (data: Inputs) => {
-        console.log(data)
         try {
-            await createPayable({ ...data, value: Number(data.value), emissionDate: new Date(data.emissionDate) })
+            const response = await createPayable({ ...data, value: Number(data.value), emissionDate: new Date(data.emissionDate) })
+            router.push(`/dashboard/payable/${response.data.id}`)
         } catch (error: any) {
-            console.log(error)
             setError('root', error)
         }
     }
