@@ -1,7 +1,10 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+"use client"
+import { TOKEN_BAKNME } from '@/app/lib/constants-local-storage'
+import { deleteLocalStorage } from '@/app/lib/localStorage'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
@@ -15,6 +18,13 @@ function classNames(...classes: string[]) {
 }
 
 const Header = () => {
+    const router = useRouter()
+
+    const logout = () => {
+        deleteLocalStorage(TOKEN_BAKNME)
+        router.push('/')
+    }
+
     return (
         <Disclosure as="nav" className="bg-white shadow-md">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -53,12 +63,12 @@ const Header = () => {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                         {/* Profile dropdown */}
-                        <Link
-                            href={'/'}
+                        <button
+                            onClick={logout}
                             className={'text-blue-500 hover:bg-blue-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}
                         >
-                            Login
-                        </Link>
+                            Sair
+                        </button>
                     </div>
                 </div>
             </div>
