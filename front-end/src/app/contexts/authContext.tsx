@@ -1,7 +1,7 @@
 "use client"
 
 import React, { createContext, ReactNode, useContext, useEffect, useState } from "react"
-import Header from "../Components/Header"
+import Header from "../components/Header"
 import { getLocalStorage } from "../lib/localStorage"
 import { TOKEN_BAKNME } from "../lib/constants-local-storage"
 import { useRouter } from "next/navigation"
@@ -29,7 +29,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             value={{ setToken, token, deleteToken }}
         >
             {token && <Header />}
-            {children}
+            <div className="max-w-screen-xl mx-auto">
+                {children}
+            </div>
         </AuthContext.Provider>
     )
 }
