@@ -12,6 +12,10 @@ export class PayableService {
         return this.prismaService.payable.create({ data })
     }
 
+    async getAll(): Promise<Payable[]> {
+        return this.prismaService.payable.findMany({})
+    }
+
     async getById(id: string) {
         return this.prismaService.payable.findUnique({ where: { id } })
     }

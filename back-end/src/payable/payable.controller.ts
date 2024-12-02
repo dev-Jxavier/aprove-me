@@ -12,6 +12,11 @@ export class PayableController {
         return this.payableService.create(createPayableDto);
     }
 
+    @Get()
+    getAll() {
+        return this.payableService.getAll();
+    }
+
     @Get(':id')
     getById(@Param('id') id: string) {
         return this.payableService.getById(id);
