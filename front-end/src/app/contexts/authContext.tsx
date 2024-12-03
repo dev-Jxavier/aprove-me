@@ -1,10 +1,10 @@
 "use client"
 
 import React, { createContext, ReactNode, useContext, useEffect, useState } from "react"
-import Header from "../components/Header"
 import { getLocalStorage } from "../lib/localStorage"
 import { TOKEN_BAKNME } from "../lib/constants-local-storage"
 import { useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
 
 interface AuthContext {
     setToken: (token: string) => void
@@ -13,6 +13,8 @@ interface AuthContext {
 }
 
 const AuthContext = createContext<AuthContext | null>(null)
+
+const HeaderNoSSR = dynamic(() => import('../components/Header'), { ssr: false })
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const router = useRouter()
@@ -28,7 +30,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         <AuthContext.Provider
             value={{ setToken, token, deleteToken }}
         >
-            {token && <Header />}
+            <HeaderNoSSR />
             <div className="max-w-screen-xl mx-auto">
                 {children}
             </div>

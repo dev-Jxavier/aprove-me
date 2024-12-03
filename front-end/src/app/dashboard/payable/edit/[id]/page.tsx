@@ -84,7 +84,7 @@ const EditPayable = () => {
                             clearErrors('assignorId')
                             setValue('assignorId', value)
                         }}
-                        selected={watch().assignorId}
+                        selected={watch().assignorId || ""}
                         {...register("assignorId", {
                             required: "O cedente é obrigatório",
                         })}

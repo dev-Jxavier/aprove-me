@@ -39,6 +39,7 @@ const CreatePayable = () => {
                     <Input
                         disable={loading}
                         label="Valor"
+                        placeholder="00.00"
                         type="number"
                         {...register("value", {
                             required: "O valor é obrigatório",
@@ -65,7 +66,7 @@ const CreatePayable = () => {
                             clearErrors('assignorId')
                             setValue('assignorId', value)
                         }}
-                        selected={watch().assignorId}
+                        selected={watch().assignorId || ""}
                         {...register("assignorId", {
                             required: "O cedente é obrigatório",
                         })}

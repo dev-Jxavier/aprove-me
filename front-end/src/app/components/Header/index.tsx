@@ -17,9 +17,9 @@ function classNames(...classes: string[]) {
 const Header = () => {
     const router = useRouter()
     const pathname = usePathname()
-    const { deleteToken } = useAuthContext()
+    const { deleteToken, token } = useAuthContext()
     const [navigation, setNavigation] = useState([
-        { name: 'Dashboard', href: '/dashboard', current: true },
+        { name: 'Dashboard', href: '/dashboard', current: false },
         { name: 'Criar Cedente', href: '/dashboard/assignor/create', current: false },
         { name: 'Criar Pagável', href: '/dashboard/payable/create', current: false },
         { name: 'Lista Pagáveis', href: '/dashboard/payable/list', current: false },
@@ -37,12 +37,15 @@ const Header = () => {
         router.push('/')
     }
 
+    if (!token)  {
+        return null
+    }
+
     return (
         <Disclosure as="nav" className="bg-white shadow-md">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        {/* Mobile menu button*/}
                         <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Open main menu</span>
@@ -74,7 +77,6 @@ const Header = () => {
                     </div>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-                        {/* Profile dropdown */}
                         <button
                             onClick={logout}
                             className={'text-blue-500 hover:bg-blue-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}
