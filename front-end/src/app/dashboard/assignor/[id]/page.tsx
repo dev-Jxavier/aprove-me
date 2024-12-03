@@ -29,7 +29,8 @@ const DetailsAssignor = () => {
             <div className="shadow-lg rounded-lg w-max p-4">
                 <h1 className="text-center text-xl mb-4">{loading ? 'Carregando...' : 'Cedente'}</h1>
 
-                {!loading && (
+                {!loading && !assignor && <p className="font-bold">Nenhum cedente encontrado!</p>}
+                {!loading && assignor && (
                     <>
                         <p>Nome: <strong>{assignor?.name}</strong></p>
                         <p>Email: <strong>{assignor?.email}</strong></p>

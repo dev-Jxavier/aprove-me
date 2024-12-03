@@ -29,8 +29,8 @@ const DetailsPayable = () => {
         <div className="flex flex-col justify-center items-center mt-20 space-y-10">
             <div className="shadow-lg rounded-lg w-max p-4">
                 <h1 className="text-center text-xl mb-4">{loading ? 'Carregando...' : 'Pagável'}</h1>
-
-                {!loading && (
+                {!loading && !payable && <p className="font-bold">Nenhum pagável encontrado!</p>}
+                {!loading && payable && (
                     <>
                         <p>Valor: <strong>{payable?.value}</strong></p>
                         <p>Data: <strong>{new Date(payable?.emissionDate!).toLocaleDateString()}</strong></p>
