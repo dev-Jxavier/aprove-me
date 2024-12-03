@@ -37,7 +37,6 @@ const DetailsAssignor = () => {
                 <p>Telefone: <strong>{assignor?.phone}</strong></p>
 
             </div>
-            <Link href={'/dashboard/assignor/create'} className="bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 rounded-md">Criar um novo</Link>
         </div>
     )
 

@@ -32,10 +32,9 @@ const DetailsPayable = () => {
 
                 <p>Valor: <strong>{payable?.value}</strong></p>
                 <p>Data: <strong>{new Date(payable?.emissionDate!).toLocaleDateString()}</strong></p>
-                <p>Id do cedente: <strong>{payable?.assignorId}</strong></p>
-
+                <p className="mb-4">Id do cedente: <strong>{payable?.assignorId}</strong></p>
+                <Link href={`/dashboard/assignor/${payable?.assignorId}`} className="bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 rounded-md">Detalhes do cedente</Link>
             </div>
-            <Link href={'/dashboard/payable/create'} className="bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 rounded-md">Criar um novo</Link>
         </div>
     )
 
