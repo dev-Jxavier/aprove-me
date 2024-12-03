@@ -1,8 +1,9 @@
 'use client'
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/20/solid"
+import { PencilSquareIcon, TrashIcon, InformationCircleIcon } from "@heroicons/react/20/solid"
 import { deletePayable, getAllPayable, PayableProps } from "@/app/services/payable"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const ListPayable = () => {
     const [payables, setPayables] = useState<PayableProps[]>([])
@@ -51,9 +52,9 @@ const ListPayable = () => {
                                 <td className="border border-gray-300 px-4 py-2">
                                     {new Date(payable.emissionDate).toLocaleString()}
                                 </td>
-                                <td className="border border-gray-300 px-4 py-2">
+                                <td className="border border-gray-300 px-4 py-2 flex items-center space-x-2">
                                     <button
-                                        className="text-blue-600 hover:text-blue-800 font-semibold mr-2"
+                                        className="text-blue-600 hover:text-blue-800 font-semibold"
                                         onClick={() => onEdit(payable.id!)}
                                     >
                                         <PencilSquareIcon className="size-6 shrink-0 text-indigo-500" />
@@ -64,6 +65,12 @@ const ListPayable = () => {
                                     >
                                         <TrashIcon className="size-6 shrink-0 text-red-500" />
                                     </button>
+                                    <Link
+                                        href={`/dashboard/payable/${payable.id}`}
+                                        className="text-gray-600 hover:text-gray-800 font-semibold"
+                                    >
+                                        <InformationCircleIcon className="size-6 shrink-0 text-gray-500" />
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
