@@ -27,6 +27,9 @@ const CreateAssignor = () => {
     }
 
     return (
+        <>
+            <h1 className="font-bold my-10 text-2xl">Criar cedente novo: </h1>
+
         <form className=" space-y-2 p-4" onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <Input
@@ -92,6 +95,7 @@ const CreateAssignor = () => {
             <Button label="Cadastar" type="submit" />
             {errors.root && <span>Erro interno! Contate o suporte</span>}
         </form>
+        </>
 
     )
 }
