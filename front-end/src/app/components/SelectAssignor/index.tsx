@@ -11,9 +11,10 @@ interface SelectProps {
     selected: string
     setSelected: (assignor: string) => void
     error?: string | undefined
+    disable?: boolean
 }
 
-const SelectAssignor = ({ label, error, selected, setSelected, ...props }: SelectProps) => {
+const SelectAssignor = ({ label, error, selected, setSelected, disable = false }: SelectProps) => {
     const [assignors, setAssignors] = useState<AssignorProps[]>([])
     const selectedAssignor = assignors.find(assignor => assignor.id === selected)
     const [loading, setLoading] = useState(false)
@@ -36,10 +37,10 @@ const SelectAssignor = ({ label, error, selected, setSelected, ...props }: Selec
 
     return (
         <>
-            <Listbox value={selected} onChange={setSelected} disabled={loading}>
+            <Listbox value={selected} onChange={setSelected} disabled={loading || disable}>
                 <Label className="block text-sm/6 font-medium text-gray-900">{label}</Label>
                 <div className="relative mt-2">
-                    <ListboxButton className={classNames('grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-2 text-left text-gray-900 outline outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6',
+                    <ListboxButton className={classNames('disabled:opacity-40 grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-2 text-left text-gray-900 outline outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6',
                         { 'outline-red-500': error },
                         { 'outline-gray-300': !error }
                     )}>

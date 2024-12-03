@@ -24,3 +24,7 @@ export const getAllPayable = () => {
 export const deletePayable = (id: string) => {
     return api.delete(`/integrations/payable/${id}`)
 }
+
+export const editPayable = (id: string, { value, emissionDate, assignorId }: Partial<PayableProps>) => {
+    return api.patch(`/integrations/payable/${id}`, { value, emissionDate, assignorId })
+}

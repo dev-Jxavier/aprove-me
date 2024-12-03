@@ -7,7 +7,6 @@ import Link from "next/link"
 
 const ListPayable = () => {
     const [payables, setPayables] = useState<PayableProps[]>([])
-    const router = useRouter()
 
     const fetchAllPayables = async () => {
         try {
@@ -24,10 +23,6 @@ const ListPayable = () => {
     const onDelete = async (id: string) => {
         await deletePayable(id)
         fetchAllPayables()
-    }
-
-    const onEdit = (id: string) => {
-        router.push(`/dashboard/payable/create/${id}`)
     }
 
     return (
@@ -53,12 +48,12 @@ const ListPayable = () => {
                                     {new Date(payable.emissionDate).toLocaleString()}
                                 </td>
                                 <td className="border border-gray-300 px-4 py-2 flex items-center space-x-2">
-                                    <button
-                                        className="text-blue-600 hover:text-blue-800 font-semibold"
-                                        onClick={() => onEdit(payable.id!)}
+                                    <Link
+                                        href={`/dashboard/payable/edit/${payable.id}`}
+                                        className="text-gray-600 hover:text-gray-800 font-semibold"
                                     >
                                         <PencilSquareIcon className="size-6 shrink-0 text-indigo-500" />
-                                    </button>
+                                    </Link>
                                     <button
                                         className="text-red-600 hover:text-red-800 font-semibold"
                                         onClick={() => onDelete(payable.id!)}
