@@ -1,4 +1,4 @@
-export const setLocalStorage = (key:string, value: unknown) => {
+export const setLocalStorage = (key: string, value: unknown) => {
     if (typeof localStorage !== 'undefined') {
         const valueString = typeof value !== "string" ? JSON.stringify(value) : value
         localStorage.setItem(key, valueString)
@@ -13,7 +13,7 @@ export const getLocalStorage = (key: string) => {
         try {
             return JSON.parse(localStorageValue);
         } catch (error) {
-          return localStorageValue;
+            return localStorageValue;
         }
     }
     return null;

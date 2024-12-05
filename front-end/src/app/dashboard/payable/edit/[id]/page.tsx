@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import Input from "@/app/components/Input"
 import Select from "@/app/components/SelectAssignor"
 import Button from "@/components/Button";
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 
 interface Inputs {
@@ -19,23 +19,28 @@ const EditPayable = () => {
     const { register, handleSubmit, setError, formState: { errors }, setValue, watch, clearErrors } = useForm<Inputs>();
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        const fetch = async () => {
-            setLoading(true)
-            try {
-                const { data } = await getByIdPayable(id)
-                setValue('value', data.value)
-                setValue('emissionDate', new Date(new Date(data.emissionDate).getTime() - 3 * 60 * 60 * 1000).toISOString().slice(0, 16)) //UTC-3
-                setValue('assignorId', data.assignorId)
-            } catch (error) {
-                console.error(error)
-            } finally {
-                setLoading(false)
-            }
+    const fetch = useCallback(async () => {
+        setLoading(true)
+        try {
+            const { data } = await getByIdPayable(id)
+            setValue('value', data.value)
+            setValue(
+                'emissionDate',
+                new Date(new Date(data.emissionDate).getTime() - 3 * 60 * 60 * 1000) //Mudando o horário para -3 (UTC-3)
+                    .toISOString()
+                    .slice(0, 16)
+            )
+            setValue('assignorId', data.assignorId)
+        } catch (error) {
+            console.error(error)
+        } finally {
+            setLoading(false)
         }
+    }, [id, setValue])
 
+    useEffect(() => {
         fetch()
-    }, [id])
+    }, [fetch])
 
     const onSubmit = async (data: Inputs) => {
         setLoading(true)

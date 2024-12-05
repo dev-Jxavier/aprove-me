@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         if (!token) router.push('/')
-    }, [token])
+    }, [token, router])
 
     return (
         <AuthContext.Provider
