@@ -25,7 +25,12 @@ Este repositório contém duas aplicações:
    npm install
    ```
 
-3. **Iniciar a aplicação:**
+3. **Buildando a aplicação:**
+   ```bash
+   npm run build
+   ```
+
+4. **Iniciar a aplicação:**
    ```bash
    npm run start
    ```
@@ -54,7 +59,12 @@ Este repositório contém duas aplicações:
    npm install --legacy-peer-deps
    ```
 
-3. **Iniciar a aplicação:**
+3. **Buildando a aplicação:**
+   ```bash
+   npm run build
+   ```
+
+4. **Iniciar a aplicação:**
    ```bash
    npm run start
    ```
@@ -82,6 +92,10 @@ Este repositório contém duas aplicações:
 
 ---
 
+<!-- ## Considerações Finais
+*Agradeço a oportunidade de realizar o teste técnico, espero vê-los novamente em breve!* -->
+
 ## Considerações Finais
-*Agradeço a oportunidade de realizar o teste técnico, espero vê-los novamente em breve!*
+Agradeço a oportunidade de realizar o teste técnico, espero vê-los novamente em breve! O processo de criação das aplicações foi extremamente proveitoso e enriquecedor, proporcionando novos aprendizados e desafios. Infelizmente, devido ao tempo limitado, não foi possível implementar todos os itens da lista. Contudo, estou animado com a possibilidade de uma futura colaboração. Até breve!
+
 
