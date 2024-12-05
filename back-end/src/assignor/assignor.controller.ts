@@ -2,7 +2,9 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { CreateAssignorDto } from './dto/create-assignor.dto';
 import { AssignorService } from './assignor.service';
 import { UpdatePayableDto } from '../payable/dto/update-payable.dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @Controller('integrations/assignor')
 export class AssignorController {
     constructor(private readonly assignorService: AssignorService) { }

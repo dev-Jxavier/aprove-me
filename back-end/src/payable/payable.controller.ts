@@ -2,7 +2,9 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { CreatePayableDto } from './dto/create-payable.dto';
 import { PayableService } from './payable.service';
 import { UpdatePayableDto } from './dto/update-payable.dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @Controller('integrations/payable')
 export class PayableController {
     constructor(private readonly payableService: PayableService) { }
