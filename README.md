@@ -7,6 +7,16 @@ Este repositório contém duas aplicações:
 
 ---
 
+## Preview
+
+![image](https://github.com/user-attachments/assets/12048fbd-6d49-481e-b005-28a27cb6c1c1)
+![image](https://github.com/user-attachments/assets/9db3465b-fcfa-4268-a93f-c42bd70f3603)
+![image](https://github.com/user-attachments/assets/29299ab4-34b4-4fcd-8a31-7470dcd7f045)
+![image](https://github.com/user-attachments/assets/40c862b4-5f2a-467f-aca2-56bcb00a4a0d)
+![image](https://github.com/user-attachments/assets/9a5b7835-9881-4485-9977-6a731c30d703)
+
+---
+
 ## Configuração e Inicialização do Back-end
 
 ### Pré-requisitos
